@@ -1,0 +1,111 @@
+#resume{
+    padding-top: $large-padding;
+    padding-bottom: $large-padding;
+    .resume-content{
+        display: flex;
+        gap: $large-gap;
+        flex-wrap: wrap;
+        & >.row{
+            min-width: 300px;
+            width: 48%;
+            max-width: 1000px;
+            .subtitle{
+                margin-bottom: $small-margin;
+                font-weight: bold;
+                font-size: var(--title-size);
+                color: $theme-color;
+            }
+            #online,#academic{
+                font-size: var(--subtitle-size);
+                font-weight: bold;
+                text-transform: uppercase;
+                margin: $large-margin 0;
+            }
+            ul{
+                display: flex;
+                flex-direction: column;
+                gap: $large-gap;
+                border-left: 2px solid $theme-color;
+                padding: 0 $medium-padding;
+                li{
+                    display: flex;
+                    flex-direction: column;
+                    gap: $medium-gap;
+                    position: relative;
+                    &::before{
+                        content: "";
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 15px;
+                        height: 15px;
+                        left: -28.5px;
+                        border-radius: $circle-border-radius;
+                        border: 2px solid $theme-color;
+                        background-color: white;
+                    }
+                    a{
+                        p{
+                            display: flex;
+                            align-items: center;
+                            svg{
+                                width: 20px;
+                                height: 20px;
+                                fill: $theme-color;
+                                margin-left: $small-margin;
+                            }
+                        }
+
+
+                        &:hover{
+                            p{
+                                color: $theme-color;
+                                svg{
+                                    fill:$color-grey;
+                                }
+                            }
+                        }
+                    }
+                    .item-title{
+                        font-size: var(--subtitle-size);
+                        font-weight: bold;
+                        color: $color-grey;
+                    }
+                    .item-date{
+                        font-weight: bold;
+                    }
+                    // .item-place{
+
+                    // }
+                    // .item-description{
+
+                    // }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1000px){
+    #resume{
+
+        .resume-content{
+            display: flex;
+            gap: $large-gap;
+            flex-direction: column;
+            & >.row{
+                min-width: 300px;
+                width: 100%;
+            }
+        }
+    }
+}
+@media screen and (max-width: 650px){
+    #resume{
+        .section-title {
+            margin: $large-margin auto ;
+
+        }
+    }
+
+}

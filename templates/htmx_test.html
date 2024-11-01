@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter App</title>
+    <script src="https://unpkg.com/htmx.org"></script>
+</head>
+<body>
+    <h1>Counter App</h1>
+
+    <div id="counter-div">
+        <!-- Load the current counter value -->
+        {% include 'counter.html' %}
+    </div>
+
+    <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
+
+
+    <button hx-post="{% url 'increment_count' %}" hx-target="#counter-div" hx-swap="outerHTML" hx-headers="#csrf-form">Increment</button>
+    <button hx-post="{% url 'decrement_count' %}" hx-target="#counter-div" hx-swap="outerHTML" hx-headers="#csrf-form">Decrement</button>
+
+
+    <script>
+        document.addEventListener('htmx:configRequest', (event) => {
+            const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+            event.detail.headers['X-CSRFToken'] = csrfToken;
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,98 @@
+
+@function min($a, $b) {
+    @return if($a < $b, $a, $b);
+  }
+
+:root{
+    --section-margin: #{$section-margin};
+    --main-font-size: #{$base-main-size};
+    --title-size: calc(var(--main-font-size) * 1.5);
+    --subtitle-size:calc(var(--main-font-size) * 1.2) ;
+
+}
+@media screen and (max-width: 650px){
+    :root{
+        --main-font-size: 12px;
+    }
+}
+*,*::after,*::before{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style-type: none;
+    text-decoration: none;
+    color: $base-main-color;
+    font-size: var(--main-font-size);
+
+}
+
+body{
+    font-family: $base-main-font-family;
+    display: flex;
+}
+$width70: 70%;
+$width100: calc(100% - 350px);
+#content{
+    width: 100%;
+    min-height: 100vh;
+    overflow: auto;
+}
+.title{
+    font-size:  var( --title-size);
+    font-weight: bold;
+    text-transform: capitalize;
+}
+.subtitle{
+    font-size: var(--subtitle-size);
+    text-transform: capitalize;
+}
+.show-flex{
+    display: flex !important;
+}
+.hidden{
+    display: none !important;
+}
+
+.left-margin{
+    margin-left: var(--section-margin);
+}
+.right-margin{
+    margin-right: var(--section-margin);
+}
+.section-title{
+    width: fit-content;
+    font-size:  calc(var( --title-size) * 1.5);
+    font-weight: bold;
+    text-transform: capitalize;
+    border-bottom: 4px solid $theme-color;
+    margin-bottom: $medium-margin;
+    padding-bottom: $small-padding;
+}
+.sub-content {
+    *{
+        color: $base-seconde-color;
+    }
+    &> :nth-child(even){
+        background-color: $even-background-color;
+    }
+}
+.right-padding{
+    padding-right: $large-padding*4;
+}
+.left-padding{
+    padding-left: $large-padding*4;
+}
+
+@media screen and (max-width: 900px){
+    .right-padding{
+        padding: $small-padding;
+    }
+    .left-padding{
+        padding: $small-padding;
+    }
+}
+.active{
+    svg{
+        fill: $theme-color !important;
+    }
+}

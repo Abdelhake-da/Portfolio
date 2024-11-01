@@ -1,0 +1,66 @@
+{% load static %}
+{% load i18n %}
+<div id="header-div" class="hidden">
+    <div>
+        <div class="my_info">
+            <div class="my_div">
+                <img src="{{pi.myimg.url}}" alt="">
+                    <p class="title">{{pi.full_name}}</p>
+            </div>
+            <div class="social-media">
+                <ul>
+                    {% comment %} Font Awesome:
+                    <link rel="stylesheet"
+                        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> {% endcomment %}
+                    <li >
+                        <a href="{{pi.facebook}}">
+                            {% include "logos/facebook.svg" %}
+                        </a>
+                    </li>
+                    <li >
+                        <a href="{{pi.linkedin}}">
+                            {% include "logos/linkedin.svg" %}
+                        </a>
+                    </li>
+                    <li >
+                        <a href="{{pi.github}}">
+                            {% include "logos/github.svg" %}
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="links">
+            <ul>
+                <li>
+                    <a class='subtitle active' href="#home">
+                        {% include "logos/house.svg" %}
+                        {% trans 'Home' %}
+                    </a>
+                </li>
+                <li>
+                    <a class='subtitle' href="#about">
+                        {% include "logos/person-circle.svg" %}
+                        {% trans 'About' %}
+                    </a>
+                </li>
+                <li>
+                    <a class='subtitle' href="#resume">
+                        {% include "logos/file-earmark-text.svg" %}
+                        {% trans 'Resume' %}
+                    </a>
+                </li>
+                <li>
+                    <a class='subtitle' href="#portfolio">
+                        {% include "logos/images.svg" %}
+                        {% trans 'portfolio' %}
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="developer">
+        {% include "logos/abdelhakeLogo_white.svg" %}
+        <p>{% trans "devlopded by Mr_Abdelheq" %} </p>
+    </div>
+</div>

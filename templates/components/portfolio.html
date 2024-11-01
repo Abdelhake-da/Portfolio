@@ -1,0 +1,23 @@
+{% load i18n %}
+<div id="portfolio" class='{{class}}'>
+    <p class="section-title">{% trans "Portfolio" %}</p>
+    <div class="my-projects">
+        {% for project in projects %}
+
+        <div class="project">
+            <a {% if project.url %} href="{{project.url}}"{% endif %}>
+                <div class="project-content">
+                    <img src="{{project.main_image.url}}" alt="">
+                    <div class="project-description">
+                        <p class="project-title">{{project.title}}</p>
+                        <p class="technology">
+                            {{project.technologies_used}}
+                        </p>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        {% endfor %}
+    </div>
+</div>

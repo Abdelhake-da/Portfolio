@@ -1,0 +1,55 @@
+{% extends "base/base.html" %}
+{% load static %}
+{% load sass_tags %}
+
+{% block links %}
+    <link rel="stylesheet" href="{% sass_src 'scss/pages/index.scss' %}">
+{% endblock links %}
+
+{% block content %}
+    <div id="toggle">
+        <div id="list">
+            {% include "logos/list.svg" %}
+        </div>
+        <div id="close" class="hidden">
+            {% include "logos/x.svg" %}
+        </div>
+    </div>
+    {% include "components/header.html" %}
+    <section id="content" class="left-margin">
+        {% include "components/home.html" %}
+        <section class="sub-content ">
+            {% include "components/about.html" with class="left-padding" %}
+            {% include "components/skills.html" with class="left-padding"  %}
+            {% include "components/resume.html" with class="left-padding" %}
+            {% include "components/portfolio.html" with class="left-padding" %}
+        </section>
+    </section>
+{% endblock content %}
+
+{% block scripts %}
+<script src="{% static 'js/components/toggle.js' %}" ></script>
+
+<script src="{% static 'js/components/typing.js' %}" ></script>
+
+<script>
+
+    let navmenulinks = document.querySelectorAll('.links a');
+    function navmenuScrollspy() {
+      navmenulinks.forEach(navmenulink => {
+        if (!navmenulink.hash) return;
+        let section = document.querySelector(navmenulink.hash);
+        if (!section) return;
+        let position = window.scrollY + 300;
+        if (position >= section.offsetTop && position <= (section.offsetTop + section.offsetHeight)) {
+          document.querySelectorAll('.links a.active').forEach(link => link.classList.remove('active'));
+          navmenulink.classList.add('active');
+        } else {
+          navmenulink.classList.remove('active');
+        }
+      })
+    }
+    window.addEventListener('load', navmenuScrollspy);
+    document.addEventListener('scroll', navmenuScrollspy);
+</script>
+{% endblock scripts %}

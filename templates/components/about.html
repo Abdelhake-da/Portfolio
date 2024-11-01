@@ -1,0 +1,54 @@
+{% load i18n %}
+{% load static %}
+<div id="about" class='{{class}}'>
+    <p class="section-title">{% trans "About me" %}</p>
+    <p class="paragraph"> {{pi.description_about_me}} </p>
+    <div class="my-info">
+        <div class="my-img">
+            <img src="{{pi.myimg.url}}" alt="" />
+        </div>
+        <ul>
+             <li> {% include "logos/chevron-right.svg" %}
+                <span class='item-title'> {% trans "birthday" %} : </span>  <span class='item-value'>
+            {{pi.birth_date}}
+         </span></li>
+                <li> {% include "logos/chevron-right.svg" %}
+                        <span class='item-title'>{% trans "website" %} :
+
+                </span><span class='item-value'>
+
+            {% if not pi.web_site == None %} <a href="{{pi.web_site}}">Abdelheq's web site</a>{% else %}.......{% endif %}
+         </span></li>
+                    <li> {% include "logos/chevron-right.svg" %}
+                        <span class='item-title'>{% trans "phone" %} : </span><span class='item-value'>
+
+            {{pi.phone_number}}
+         </span></li>
+                    <li> {% include "logos/chevron-right.svg" %}
+                        <span class='item-title'>{% trans "city" %} : </span><span class='item-value'>
+
+            {{pi.city}}
+         </span></li>
+                    <li> {% include "logos/chevron-right.svg" %}
+                        <span class='item-title'>{% trans "age" %} : </span><span class='item-value'>
+
+            {{pi.age}}
+         </span></li>
+                    <li> {% include "logos/chevron-right.svg" %}
+                        <span class='item-title'>{% trans "degree" %} : </span><span class='item-value'>
+
+            {{pi.degree}}
+         </span></li>
+                    <li> {% include "logos/chevron-right.svg" %}
+                        <span class='item-title'>{% trans "email" %} : </span><span class='item-value'>
+
+            {{pi.email}}
+         </span></li>
+                    <li> {% include "logos/chevron-right.svg" %}
+                        <span class='item-title'>{% trans "freelance" %} : </span><span class='item-value'>
+
+            {{pi.freelance}}
+         </span></li>
+        </ul>
+    </div>
+</div>

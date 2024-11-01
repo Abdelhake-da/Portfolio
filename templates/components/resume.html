@@ -1,0 +1,49 @@
+{% load i18n %}
+<div id="resume" class='{{class}}'>
+    <p class="section-title">{% trans "Resume" %}</p>
+    {% with  acadimic=resume.0 online=resume.1 experience=resume.2 %}
+    <div class="resume-content">
+        <div class="education row">
+            <p class="subtitle">{% trans "Education" %}</p>
+            <div >
+                <p id='academic'>{% trans "academic" %}</p>
+                <ul>
+                    {% for item in acadimic %}
+                    <li>
+                        <p class="item-title">{{item.degree}}</p>
+                        <p class="item-date">{{item.date}}</p>
+                        <p class="item-place"> {{item.institution}} </p>
+                        <p class="item-description">{{item.description}}</p>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div >
+                <p id='online'>{% trans "online Courses" %}</p>
+                <ul>
+                    {% for item in online %}
+                    <li>
+                        <a href="{{item.certificate_url}}"><p class="item-title">{{item.title}} {% include "logos/chevron-right.svg" %} </p></a>
+                        <p class="item-date"> {{item.date}} </p>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+        </div>
+        <div class="experience row">
+            <p class="subtitle">{% trans "Experience" %}</p>
+            <ul>
+                {% for item in experience  %}
+                <li>
+                    <p class="item-title">{{item.title}}</p>
+                    <p class="item-date">{{item.date}}</p>
+                    <p class="item-place">{{item.company}}</p>
+                    <p class="item-description">{{item.description}}</p>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    {% endwith %}
+</div>

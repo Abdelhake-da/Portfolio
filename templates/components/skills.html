@@ -1,0 +1,21 @@
+{% load i18n %}
+{% load app_tags %}
+<div id="skills" class='{{class}}'>
+    <p class="section-title">{% trans "My skills" %}</p>
+    <ul>
+        {% with category|get_category_items as sk %}
+            {% for category, skills in sk %}
+            <li>
+                <p class="item-title">{{category.name}}</p>
+                <ul>
+                    {% for skill in skills %}
+                    <li>
+                        {% include "logos/dot.svg" %}
+                        <p>{{skill.name}}</p></li>
+                    {% endfor %}
+                </ul>
+            </li>
+            {% endfor %}
+        {% endwith %}
+    </ul>
+</div>
