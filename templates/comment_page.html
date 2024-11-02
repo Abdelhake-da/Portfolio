@@ -1,0 +1,24 @@
+<!-- comment_page.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Comment Page</title>
+    <script src="https://unpkg.com/htmx.org@1.9.2"></script>
+</head>
+<body>
+    <h1>Comments</h1>
+
+    <!-- Comments Section -->
+    <div id="comments-section">
+        {% include "comments_section.html" %}
+    </div>
+
+    <!-- Add Comment Form -->
+    <form hx-post="{% url 'app:add_comment' %}" hx-target="#comments-section" hx-swap="innerHTML" method="POST">
+        {% csrf_token %}
+        <textarea name="comment" placeholder="Add a comment..."></textarea>
+        <button type="submit">Post Comment</button>
+    </form>
+</body>
+</html>

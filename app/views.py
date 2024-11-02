@@ -26,6 +26,8 @@ def download_database(request):
         return response
 
 def index(request):
+    if "proj" not in request.session:
+        request.session["proj"] = None
     # Render the index page with the current counter value
     personal_info = PersonalInfo.objects.first()
     category = SkillCategory.objects.all()
@@ -38,4 +40,55 @@ def index(request):
         'projects' : projects
 
     }
-    return render(request, 'index.html',context)
+    return render(request, 'pages/index.html',context)
+def get_project(request):
+    # Get action from GET parameters to either increment or decrement
+    proj = request.GET.get("proj")
+    project = Project.objects.get(id=proj)
+
+    return render(request, "components/project_description.html", {"project": project})
+
+from django.http import JsonResponse
+
+def counter_view(request):
+    # Initialize counter if it doesn't exist in the session
+    if "counter" not in request.session:
+        request.session["counter"] = 0
+
+    # Get action from GET parameters to either increment or decrement
+    action = request.GET.get("action")
+    if action == "increment":
+        request.session["counter"] += 1
+    elif action == "decrement":
+        request.session["counter"] -= 1
+
+    # Save the updated session
+    request.session.modified = True
+
+    # Return only the counter value as HTML for HTMX
+    return HttpResponse(request.session["counter"])
+
+def counter_page(request):
+    return render(request, "htmx_test.html")
+
+
+
+def comment_page(request):
+    # Initialize comments list in session if it doesn't exist
+    if "comments" not in request.session:
+        request.session["comments"] = []
+
+    return render(request, "comment_page.html")
+
+def add_comment(request):
+    # Retrieve comment text from the request
+    comment_text = request.POST.get("comment")
+    if comment_text:
+        # Append the new comment to the session's comments list
+        comments = request.session.get("comments", [])
+        comments.append(comment_text)
+        request.session["comments"] = comments
+        request.session.modified = True
+
+    # Render the comments section HTML only
+    return render(request, "comments_section.html", {"comments": request.session["comments"]})

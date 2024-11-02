@@ -1,0 +1,14 @@
+.login-logo h1 picture {
+    background: black;
+    padding: 30px;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    margin: auto;
+
+}
+
+.brand-link .brand-image {
+    border-radius: 0;
+}

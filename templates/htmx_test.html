@@ -4,29 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Counter App</title>
-    <script src="https://unpkg.com/htmx.org"></script>
+    <script src="https://unpkg.com/htmx.org@1.9.2"></script>
 </head>
 <body>
-    <h1>Counter App</h1>
 
-    <div id="counter-div">
-        <!-- Load the current counter value -->
-        {% include 'counter.html' %}
-    </div>
+    <h1>Counter: <span id="counter-value">{{ request.session.counter|default:0 }}</span></h1>
 
-    <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
+    <!-- Increment Button -->
+    <button hx-get="{% url 'app:counter_update' %}?action=increment"
+            {% comment %} hx-target="#counter-value" {% endcomment %}
+            hx-swap="innerHTML">
+        Increment
+    </button>
 
-
-    <button hx-post="{% url 'increment_count' %}" hx-target="#counter-div" hx-swap="outerHTML" hx-headers="#csrf-form">Increment</button>
-    <button hx-post="{% url 'decrement_count' %}" hx-target="#counter-div" hx-swap="outerHTML" hx-headers="#csrf-form">Decrement</button>
-
-
+    <!-- Decrement Button -->
+    <button hx-get="{% url 'app:counter_update' %}?action=decrement"
+            hx-target="#counter-value"
+            hx-swap="innerHTML">
+        Decrement
+    </button>
+    {% comment %} <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
     <script>
         document.addEventListener('htmx:configRequest', (event) => {
             const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
             event.detail.headers['X-CSRFToken'] = csrfToken;
         });
-    </script>
+    </script> {% endcomment %}
 </body>
 
 </html>

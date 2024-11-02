@@ -82,8 +82,15 @@ $width100: calc(100% - 350px);
 .left-padding{
     padding-left: $large-padding*4;
 }
-
-@media screen and (max-width: 900px){
+@media screen and (max-width: 1500px) and (min-width: 1100px){
+    .right-padding{
+        padding: $small-padding;
+    }
+    .left-padding{
+        padding: $small-padding;
+    }
+}
+@media screen and (max-width: 1100px){
     .right-padding{
         padding: $small-padding;
     }
@@ -95,4 +102,22 @@ $width100: calc(100% - 350px);
     svg{
         fill: $theme-color !important;
     }
+}
+.btn{
+    width: fit-content;
+    background-color: $right-background-color;
+    padding: $small-padding;
+    border-radius: $medium-border-radius;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    color: $base-main-color;
+    font-size: var(--subtitle-size);
+    font-weight: bold;
+    text-transform: capitalize;
+    &:hover{
+        background-color: $right-background-color-2;
+    }
+
 }

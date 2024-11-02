@@ -11,7 +11,10 @@
             width: 30%;
             min-width: 400px;
 
-            cursor: pointer;
+            button{
+                cursor: pointer;
+                border: none;
+            }
             overflow: hidden;
             &:hover{
                 // transition: all 0.3s ease-in-out;

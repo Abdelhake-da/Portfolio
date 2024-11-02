@@ -1,6 +1,7 @@
 #resume{
     padding-top: $large-padding;
     padding-bottom: $large-padding;
+
     .resume-content{
         display: flex;
         gap: $large-gap;
@@ -83,6 +84,9 @@
                 }
             }
         }
+    }
+    &>a{
+        margin: 20px auto;
     }
 }
 

@@ -1,11 +1,14 @@
 {% load i18n %}
+{% load app_tags %}
 <div id="portfolio" class='{{class}}'>
     <p class="section-title">{% trans "Portfolio" %}</p>
+    <div id="proj-id" >
+    </div>
+
     <div class="my-projects">
         {% for project in projects %}
-
         <div class="project">
-            <a {% if project.url %} href="{{project.url}}"{% endif %}>
+            <button hx-get="{% url 'app:get_project' %}?proj={{project.id}}" hx-target="#proj-id" onclick="window.location.href='#portfolio'">
                 <div class="project-content">
                     <img src="{{project.main_image.url}}" alt="">
                     <div class="project-description">
@@ -15,7 +18,7 @@
                         </p>
                     </div>
                 </div>
-            </a>
+            </button>
         </div>
 
         {% endfor %}

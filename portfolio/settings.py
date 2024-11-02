@@ -27,7 +27,9 @@ SECRET_KEY = 'django-insecure-o5psukvs_4^@s+9is-x#9ww6fiz8yxe5+v@l-=q@fk1#n^fd8f
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    '192.168.1.10','127.0.0.1'
+    '127.0.0.1',
+    'localhost',
+    '192.168.1.10',
 ]
 
 RUNSERVERPLUS_SERVER_ADDRESS_PORT = '0.0.0.0:8000'
@@ -199,6 +201,25 @@ if DEBUG:
     INSTALLED_APPS.insert(INSTALLED_APPS.index('django.contrib.staticfiles'),'livereload')
     MIDDLEWARE.append('livereload.middleware.LiveReloadScript')
 
+# django-jazzmin
+INSTALLED_APPS.insert(0, 'jazzmin')
+# JAZZMIN_SETTINGS = {
+#     "site_title": "Mr Abdelhake",
+#     "site_header": "Administration",
+#     "site_brand": "Mr Abdelhake",
+#     "welcome_sign": "Welcome to the Mr Abdelhake",
+#     "copyright": "Mr Abdelhake",
+#     "search_model": "auth.User",
+#     "site_logo": ""
+# }
+JAZZMIN_SETTINGS = {
+    "site_header": "Mr Abdelhake",
+    "site_brand": "Mr Abdelhake",
+    "site_logo": "images/abdelhakeLogo_white.png",
+    "copyright": "Mr_abdelhake 2024",
+    "welcome_sign": "Welcome Mr Abdelhake",
+    "custom_css":"jazzmin/css/my_style.css"
+}
 
 
 # DJANGO SESSION

@@ -74,6 +74,7 @@ class PersonalInfo(models.Model):
     instagram = models.URLField(null=True, blank=True)
     myimg = models.ImageField(upload_to=my_img_upload_to,null=True,blank=True)
     background = models.ImageField(upload_to=background_upload_to,null=True,blank=True)
+    my_resume = models.FileField(upload_to='my_resume', blank=True, null=True)
 
     def __str__(self):
         return self.full_name
