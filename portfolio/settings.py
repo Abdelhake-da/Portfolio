@@ -24,7 +24,7 @@ LIVESYNC_BASE_DIR = BASE_DIR
 SECRET_KEY = 'django-insecure-o5psukvs_4^@s+9is-x#9ww6fiz8yxe5+v@l-=q@fk1#n^fd8f'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
     '127.0.0.1',
@@ -54,6 +54,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'core.middleware.visitor_counter.VisitorCounterMiddleware'
 ]
 
 ROOT_URLCONF = 'portfolio.urls'
@@ -109,11 +110,8 @@ AUTH_PASSWORD_VALIDATORS = [
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
-
-TIME_ZONE = 'UTC'
-
 USE_I18N = True
-
+TIME_ZONE = 'Africa/Algiers'
 USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
@@ -218,7 +216,11 @@ JAZZMIN_SETTINGS = {
     "site_logo": "images/abdelhakeLogo_white.png",
     "copyright": "Mr_abdelhake 2024",
     "welcome_sign": "Welcome Mr Abdelhake",
-    "custom_css":"jazzmin/css/my_style.css"
+    "custom_css":"jazzmin/css/my_style.css",
+    # "topmenu_links" : [
+    #     "name": "Home",
+    #     "url":"admin:index",
+    # ]
 }
 
 
@@ -232,3 +234,7 @@ INSTALLED_APPS += [
     'app',
     # 'core.apps.CoreConfig',
     ]
+
+
+
+

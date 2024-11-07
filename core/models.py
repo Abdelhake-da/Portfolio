@@ -1,6 +1,6 @@
 import os
 from django.db import models
-
+from django.utils import timezone
 def upload_to(instance, filename):
     # Get the file extension
     ext = filename.split('.')[-1]
@@ -22,6 +22,13 @@ def background_upload_to(instance, filename):
     new_filename = f"background.{ext}"
     # Return the custom path
     return os.path.join('Base', new_filename)
+
+class Visitor(models.Model):
+    ip_address = models.GenericIPAddressField()
+    visit_date = models.DateTimeField(default=timezone.now)
+    def __str__(self):
+        return f"{self.ip_address} - {timezone.localtime(self.visit_date)}"
+
 class Project(models.Model):
     title = models.CharField(max_length=100)
     description = models.TextField()
