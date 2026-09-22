@@ -5,28 +5,28 @@
 {% block title %}{{ pi.full_name|default:"Dabladji Abdelheq" }} | Full Stack Developer{% endblock title %}
 
 {% block seo %}
-    <meta name="description" content="{{ pi.description_about_me|default:'Portfolio of Dabladji Abdelheq, a Full Stack Developer experienced in Python, Django, React, and DevOps. Available for freelance and full-time opportunities.'|truncatechars:160 }}">
+    <meta name="description" content="{{ pi.description_about_me|default:'Portfolio of Dabladji Abdelheq, a Full Stack Developer experienced in Python, Django, React, and DevOps. Available for freelance and full-time opportunities.'|truncatewords:25 }}">
     <meta name="keywords" content="Full Stack Developer, Python, Django, React, JavaScript, DevOps, Docker, Portfolio, Dabladji Abdelheq">
     <meta name="author" content="{{ pi.full_name|default:'Dabladji Abdelheq' }}">
     <meta name="robots" content="index, follow">
-    <link rel="canonical" href="{{ pi.web_site|default:'https://mrabdelhake.pythonanywhere.com/' }}">
+    <link rel="canonical" href="{{ request.scheme }}://{{ request.get_host }}/">
 
     <!-- Open Graph -->
     <meta property="og:title" content="{{ pi.full_name|default:'Dabladji Abdelheq' }} | Full Stack Developer">
-    <meta property="og:description" content="{{ pi.description_about_me|default:'Portfolio of Dabladji Abdelheq, a Full Stack Developer experienced in Python, Django, React, and DevOps.'|truncatechars:160 }}">
+    <meta property="og:description" content="{{ pi.description_about_me|default:'Portfolio of Dabladji Abdelheq, a Full Stack Developer experienced in Python, Django, React, and DevOps.'|truncatewords:25 }}">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="{{ pi.web_site|default:'https://mrabdelhake.pythonanywhere.com/' }}">
+    <meta property="og:url" content="{{ request.scheme }}://{{ request.get_host }}/">
     <meta property="og:site_name" content="{{ pi.full_name|default:'Dabladji Abdelheq' }}">
     {% if pi.show_myimg and pi.myimg %}
-    <meta property="og:image" content="{{ pi.myimg.url }}">
+    <meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{{ pi.myimg.url }}">
     {% endif %}
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="{{ pi.full_name|default:'Dabladji Abdelheq' }} | Full Stack Developer">
-    <meta name="twitter:description" content="{{ pi.description_about_me|default:'Portfolio of Dabladji Abdelheq, a Full Stack Developer experienced in Python, Django, React, and DevOps.'|truncatechars:160 }}">
+    <meta name="twitter:description" content="{{ pi.description_about_me|default:'Portfolio of Dabladji Abdelheq, a Full Stack Developer experienced in Python, Django, React, and DevOps.'|truncatewords:25 }}">
     {% if pi.show_myimg and pi.myimg %}
-    <meta name="twitter:image" content="{{ pi.myimg.url }}">
+    <meta name="twitter:image" content="{{ request.scheme }}://{{ request.get_host }}{{ pi.myimg.url }}">
     {% endif %}
 
     <!-- Structured Data (JSON-LD) -->
@@ -36,7 +36,7 @@
       "@type": "Person",
       "name": "{{ pi.full_name|default:'Dabladji Abdelheq' }}",
       "jobTitle": "Full Stack Developer",
-      "url": "{{ pi.web_site|default:'https://mrabdelhake.pythonanywhere.com/' }}",
+      "url": "{{ request.scheme }}://{{ request.get_host }}/",
       "sameAs": [
         {% if pi.linkedin %}"{{ pi.linkedin }}"{% if pi.github or pi.facebook %},{% endif %}{% endif %}
         {% if pi.github %}"{{ pi.github }}"{% if pi.facebook %},{% endif %}{% endif %}
