@@ -1,0 +1,27 @@
+{% extends "admin/base_site.html" %}
+
+{% block content %}
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title"><i class="fas fa-compress"></i> ضغط الصور إلى WebP</h3>
+    </div>
+    <div class="card-body">
+        {% if pending %}
+            <p>الصور التالية غير مضغوطة ({{ pending|length }}):</p>
+            <ul>
+                {% for obj, field_name, file_name in pending %}
+                    <li><strong>{{ obj }}</strong> — {{ field_name }}: <code>{{ file_name }}</code></li>
+                {% endfor %}
+            </ul>
+            <form method="post">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-compress"></i> ضغط الآن
+                </button>
+            </form>
+        {% else %}
+            <p class="text-success"><i class="fas fa-check-circle"></i> كل الصور مضغوطة بالفعل (WebP).</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

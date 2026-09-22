@@ -218,10 +218,14 @@ JAZZMIN_SETTINGS = {
     "copyright": "Mr_abdelhake 2024",
     "welcome_sign": "Welcome Mr Abdelhake",
     "custom_css":"jazzmin/css/my_style.css",
-    # "topmenu_links" : [
-    #     "name": "Home",
-    #     "url":"admin:index",
-    # ]
+    "custom_links": {
+        "core": [{
+            "name": "ضغط الصور",
+            "url": "optimize_images",
+            "icon": "fas fa-compress",
+            "permissions": ["core.view_project"],
+        }]
+    },
 }
 
 

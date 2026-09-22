@@ -22,6 +22,7 @@ from django.conf.urls.static import static
 from django.views.static import serve
 from django.views.decorators.cache import cache_control
 from app.sitemaps import StaticViewSitemap
+from core.admin_views import optimize_images_view
 
 sitemaps = {
     'static': StaticViewSitemap,
@@ -31,6 +32,7 @@ urlpatterns = [
     re_path(r'^media/(?P<path>.*)$', cache_control(max_age=2592000, public=True)(serve), {'document_root': settings.MEDIA_ROOT}),
     re_path(r'^static/(?P<path>.*)$', cache_control(max_age=2592000, public=True)(serve), {'document_root': settings.STATIC_ROOT}),
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
+    path('admin/optimize-images/', admin.site.admin_view(optimize_images_view), name='optimize_images'),
     path('admin/', admin.site.urls),
     path('', include('app.urls')),
 ]
