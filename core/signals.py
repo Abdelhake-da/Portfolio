@@ -1,9 +1,16 @@
 from django.db.models.signals import pre_save
 from django.dispatch import receiver
-from .utils import compress_image
+
 from . import models
+from .services.image_optimizer import optimize_uploaded_field
+
 
 @receiver(pre_save, sender=models.Project)
-def compress_image_on_save(sender, instance, **kwargs):
-    if instance.main_image:
-        instance.image = compress_image(instance.main_image)
+def optimize_project_image(sender, instance, **kwargs):
+    optimize_uploaded_field(instance, "main_image")
+
+
+@receiver(pre_save, sender=models.PersonalInfo)
+def optimize_personal_info_images(sender, instance, **kwargs):
+    optimize_uploaded_field(instance, "myimg")
+    optimize_uploaded_field(instance, "background")
