@@ -1,10 +1,10 @@
 {% load i18n %}
 <div id="resume" class='{{class}}'>
-    <p class="section-title">{% trans "Resume" %}</p>
+    <h2 class="section-title">{% trans "Resume" %}</h2>
     {% with  acadimic=resume.0 online=resume.1 experience=resume.2 %}
     <div class="resume-content">
         <div class="education row">
-            <p class="subtitle">{% trans "Education" %}</p>
+            <h3 class="subtitle">{% trans "Education" %}</h3>
             <div >
                 <p id='academic'>{% trans "academic" %}</p>
                 <ul>
@@ -32,7 +32,7 @@
 
         </div>
         <div class="experience row">
-            <p class="subtitle">{% trans "Experience" %}</p>
+            <h3 class="subtitle">{% trans "Experience" %}</h3>
             <ul>
                 {% for item in experience  %}
                 <li>

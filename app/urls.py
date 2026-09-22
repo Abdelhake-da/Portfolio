@@ -7,6 +7,7 @@ app_name = "app"
 
 urlpatterns = [
     path('', views.index, name='index'),
+    path('robots.txt', views.robots_txt, name='robots_txt'),
     path('get_project/', views.get_project, name='get_project'),
     path('download-db/', views.download_database, name='download_database'),
 

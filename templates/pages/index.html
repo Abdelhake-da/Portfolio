@@ -16,6 +16,7 @@
     <meta property="og:description" content="{{ pi.description_about_me|default:'Portfolio of Dabladji Abdelheq, a Full Stack Developer experienced in Python, Django, React, and DevOps.'|truncatechars:160 }}">
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ pi.web_site|default:'https://mrabdelhake.pythonanywhere.com/' }}">
+    <meta property="og:site_name" content="{{ pi.full_name|default:'Dabladji Abdelheq' }}">
     {% if pi.show_myimg and pi.myimg %}
     <meta property="og:image" content="{{ pi.myimg.url }}">
     {% endif %}

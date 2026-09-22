@@ -1,7 +1,7 @@
 {% load i18n %}
 {% load static %}
 <div id="about" class='{{class}}'>
-    <p class="section-title">{% trans "About me" %}</p>
+    <h2 class="section-title">{% trans "About me" %}</h2>
     {% if pi.show_description_about_me %}
     <p class="paragraph"> {{pi.description_about_me}} </p>
     {% endif %}

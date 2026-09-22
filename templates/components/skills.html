@@ -1,12 +1,12 @@
 {% load i18n %}
 {% load app_tags %}
 <div id="skills" class='{{class}}'>
-    <p class="section-title">{% trans "My skills" %}</p>
+    <h2 class="section-title">{% trans "My skills" %}</h2>
     <ul>
         {% with category|get_category_items as sk %}
             {% for category, skills in sk %}
             <li>
-                <p class="item-title">{{category.name}}</p>
+                <h3 class="item-title">{{category.name}}</h3>
                 <ul>
                     {% for skill in skills %}
                     <li>

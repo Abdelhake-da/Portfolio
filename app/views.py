@@ -25,6 +25,21 @@ def download_database(request):
         response['Content-Disposition'] = 'attachment; filename="db.sqlite3"'
         return response
 
+def robots_txt(request):
+    lines = [
+        "User-agent: *",
+        "Allow: /",
+        "Disallow: /admin/",
+        "",
+        f"Sitemap: {request.build_absolute_uri('/sitemap.xml')}",
+    ]
+    return HttpResponse("\n".join(lines), content_type="text/plain")
+
+
+def custom_404(request, exception):
+    return render(request, "404.html", status=404)
+
+
 def index(request):
     if "proj" not in request.session:
         request.session["proj"] = None
