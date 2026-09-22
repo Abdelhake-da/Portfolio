@@ -21,7 +21,10 @@ LIVESYNC_BASE_DIR = BASE_DIR
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-o5psukvs_4^@s+9is-x#9ww6fiz8yxe5+v@l-=q@fk1#n^fd8f'
+SECRET_KEY = os.environ.get(
+    'DJANGO_SECRET_KEY',
+    'django-insecure-o5psukvs_4^@s+9is-x#9ww6fiz8yxe5+v@l-=q@fk1#n^fd8f'
+)
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
