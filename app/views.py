@@ -41,8 +41,6 @@ def custom_404(request, exception):
 
 
 def index(request):
-    if "proj" not in request.session:
-        request.session["proj"] = None
     # Render the index page with the current counter value
     personal_info = PersonalInfo.objects.first()
     category = SkillCategory.objects.filter(is_visible=True)
