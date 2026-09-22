@@ -17,3 +17,9 @@ def get_project(project_id):
         return Project.objects.get(id=project_id)
     except Exception as e:
         return None
+
+@register.filter
+def clean_tech_list(value):
+    if not value:
+        return ""
+    return ", ".join(t.strip() for t in value.split(",") if t.strip())
