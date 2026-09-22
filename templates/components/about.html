@@ -31,7 +31,7 @@
                     <li> {% include "logos/chevron-right.svg" %}
                         <span class='item-title'>{% trans "phone" %} : </span><span class='item-value'>
 
-            {{pi.phone_number}}
+            <a href="tel:{{pi.phone_number}}">{{pi.phone_number}}</a>
          </span></li>
             {% endif %}
             {% if pi.show_city %}
@@ -59,7 +59,7 @@
                     <li> {% include "logos/chevron-right.svg" %}
                         <span class='item-title'>{% trans "email" %} : </span><span class='item-value'>
 
-            {{pi.email}}
+            <a href="mailto:{{pi.email}}">{{pi.email}}</a>
          </span></li>
             {% endif %}
             {% if pi.show_freelance %}
