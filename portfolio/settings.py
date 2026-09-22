@@ -73,6 +73,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'app.context_processors.google_analytics',
 
             ],
         },
@@ -230,10 +231,25 @@ SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
 # APPS
 INSTALLED_APPS += [
+    'django.contrib.sitemaps',
     'core',
     'app',
     # 'core.apps.CoreConfig',
     ]
+
+
+# Google Analytics 4 — set GA_MEASUREMENT_ID env var (e.g. G-XXXXXXXXXX) to enable
+GA_MEASUREMENT_ID = os.environ.get('GA_MEASUREMENT_ID', 'G-EPJ7L1FKP5')
+
+
+# Security headers (production only — PythonAnywhere terminates TLS and proxies)
+if not DEBUG:
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+    SECURE_SSL_REDIRECT = True
+    SECURE_HSTS_SECONDS = 31536000
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True
 
 
 
