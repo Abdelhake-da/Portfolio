@@ -9,15 +9,15 @@
         {% for project in projects %}
         <div class="project">
             <button hx-get="{% url 'app:get_project' %}?proj={{project.id}}" hx-target="#proj-id" onclick="window.location.href='#portfolio'">
-                <div class="project-content">
+                <span class="project-content">
                     <img src="{{project.main_image.url}}" alt="{{ project.title }}" loading="lazy">
-                    <div class="project-description">
-                        <p class="project-title">{{project.title}}</p>
-                        <p class="technology">
-                            {{project.technologies_used}}
-                        </p>
-                    </div>
-                </div>
+                    <span class="project-description">
+                        <span class="project-title">{{project.title}}</span>
+                        <span class="technology">
+                            {{project.technologies_used|clean_tech_list}}
+                        </span>
+                    </span>
+                </span>
             </button>
         </div>
 

@@ -25,13 +25,14 @@
                     }
                     .project-description{
                         opacity: 1;
-                        p:hover{
+                        span:hover{
                             transform: scale(1.1);
                         }
                     }
                 }
             }
             .project-content{
+                display: block;
                 position: relative;
                 width: 100%;
                 height: fit-content;
@@ -51,7 +52,7 @@
                     align-items: center;
                     flex-direction: column;
                     gap: $large-gap;
-                    p{
+                    span{
                         color: white;
                         font-weight: bold;
                         text-transform: uppercase;
