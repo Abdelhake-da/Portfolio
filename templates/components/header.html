@@ -4,29 +4,39 @@
     <div>
         <div class="my_info">
             <div class="my_div">
-                <img src="{{pi.myimg.url}}" alt="">
+                {% if pi.show_myimg and pi.myimg %}
+                <img src="{{pi.myimg.url}}" alt="{{ pi.full_name|default:'Profile' }}">
+                {% endif %}
+                {% if pi.show_full_name %}
                     <p class="title">{{pi.full_name}}</p>
+                {% endif %}
             </div>
             <div class="social-media">
                 <ul>
                     {% comment %} Font Awesome:
                     <link rel="stylesheet"
                         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> {% endcomment %}
+                    {% if pi.show_facebook and pi.facebook %}
                     <li >
                         <a href="{{pi.facebook}}">
                             {% include "logos/facebook.svg" %}
                         </a>
                     </li>
+                    {% endif %}
+                    {% if pi.show_linkedin and pi.linkedin %}
                     <li >
                         <a href="{{pi.linkedin}}">
                             {% include "logos/linkedin.svg" %}
                         </a>
                     </li>
+                    {% endif %}
+                    {% if pi.show_github and pi.github %}
                     <li >
                         <a href="{{pi.github}}">
                             {% include "logos/github.svg" %}
                         </a>
                     </li>
+                    {% endif %}
                 </ul>
             </div>
         </div>
@@ -53,7 +63,7 @@
                 <li>
                     <a class='subtitle' href="#portfolio">
                         {% include "logos/images.svg" %}
-                        {% trans 'portfolio' %}
+                        {% trans 'Portfolio' %}
                     </a>
                 </li>
             </ul>
@@ -61,6 +71,6 @@
     </div>
     <div class="developer">
         {% include "logos/abdelhakeLogo_white.svg" %}
-        <p>{% trans "devlopded by Mr_Abdelheq" %} </p>
+        <p>{% trans "developed by Mr_Abdelheq" %} </p>
     </div>
 </div>

@@ -46,5 +46,7 @@
         </div>
     </div>
     {% endwith %}
+    {% if pi.show_my_resume and pi.my_resume %}
     <a href="{{pi.my_resume.url}}" class="btn"> {% trans "Download resume" %}</a>
+    {% endif %}
 </div>

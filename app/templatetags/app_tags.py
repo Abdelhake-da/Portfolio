@@ -7,7 +7,7 @@ register = template.Library()
 def get_category_items(categories):
     skills = []
     for category in categories:
-        skill = Skill.objects.filter(category=category)
+        skill = Skill.objects.filter(category=category, is_visible=True)
         if len(skill) > 0:
             skills.append([category, skill])
     return skills

@@ -24,7 +24,7 @@ LIVESYNC_BASE_DIR = BASE_DIR
 SECRET_KEY = 'django-insecure-o5psukvs_4^@s+9is-x#9ww6fiz8yxe5+v@l-=q@fk1#n^fd8f'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [
     '127.0.0.1',

@@ -36,6 +36,7 @@ class Project(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     url = models.URLField(null=True,blank=True)
     main_image = models.ImageField(upload_to=upload_to)
+    is_visible = models.BooleanField(default=True)
     def __str__(self):
         return self.title
 
@@ -44,6 +45,7 @@ class Experience(models.Model):
     company = models.CharField(max_length=100)
     date = models.CharField(max_length=20,null=True)
     description = models.TextField()
+    is_visible = models.BooleanField(default=True)
 
     def __str__(self):
         return self.title
@@ -53,15 +55,19 @@ class Education(models.Model):
     institution = models.CharField(max_length=100)
     date = models.CharField(max_length=20,null=True)
     description = models.TextField()
+    is_visible = models.BooleanField(default=True)
 
     def __str__(self):
         return self.degree
+
 class OnlineCourse(models.Model):
     title = models.CharField(max_length=100)
     date = models.DateField(null=True)
     certificate_url = models.URLField()
+    is_visible = models.BooleanField(default=True)
     def __str__(self) -> str:
         return self.title
+
 class PersonalInfo(models.Model):
     full_name = models.CharField(max_length=100)
     birth_date = models.DateField()
@@ -83,17 +89,41 @@ class PersonalInfo(models.Model):
     background = models.ImageField(upload_to=background_upload_to,null=True,blank=True)
     my_resume = models.FileField(upload_to='my_resume', blank=True, null=True)
 
+    show_full_name = models.BooleanField(default=True)
+    show_birth_date = models.BooleanField(default=True)
+    show_phone_number = models.BooleanField(default=True)
+    show_age = models.BooleanField(default=True)
+    show_email = models.BooleanField(default=True)
+    show_web_site = models.BooleanField(default=True)
+    show_city = models.BooleanField(default=True)
+    show_degree = models.BooleanField(default=True)
+    show_freelance = models.BooleanField(default=True)
+    show_what_i_do = models.BooleanField(default=True)
+    show_description_about_me = models.BooleanField(default=True)
+    show_facebook = models.BooleanField(default=True)
+    show_twitter = models.BooleanField(default=True)
+    show_linkedin = models.BooleanField(default=True)
+    show_github = models.BooleanField(default=True)
+    show_instagram = models.BooleanField(default=True)
+    show_myimg = models.BooleanField(default=True)
+    show_background = models.BooleanField(default=True)
+    show_my_resume = models.BooleanField(default=True)
+
     def __str__(self):
         return self.full_name
+
 class SkillCategory(models.Model):
     name = models.CharField(max_length=100)
+    is_visible = models.BooleanField(default=True)
 
     def __str__(self):
         return self.name
+
 class Skill(models.Model):
     category = models.ForeignKey(SkillCategory, on_delete=models.CASCADE,null=True)
     name = models.CharField(max_length=100)
     level = models.CharField(max_length=100)
+    is_visible = models.BooleanField(default=True)
 
     def __str__(self):
         return self.name

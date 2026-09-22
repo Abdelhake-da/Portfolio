@@ -1,10 +1,14 @@
 {% load static %}
 {% load i18n %}
 <div id="home"  >
-    <div class="home-my_img" style = "background-image: url('{{pi.background.url}}">
+    <div class="home-my_img" {% if pi.show_background and pi.background %}style="background-image: url('{{pi.background.url}}')"{% endif %}>
         <div class="home-my_info">
+            {% if pi.show_full_name %}
             <p class="title">{{pi.full_name}}</p>
-            <p class="subtitle" >i'm <span id="typing-text" value = '{{pi.what_i_do}}'> </span></p>
+            {% endif %}
+            {% if pi.show_what_i_do %}
+            <p class="subtitle" >I'm <span id="typing-text" value="{{ pi.what_i_do|default:'' }}"></span></p>
+            {% endif %}
         </div>
     </div>
 

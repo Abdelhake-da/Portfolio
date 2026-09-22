@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from core.models import *
 import os
 from django.http import HttpResponse, Http404
@@ -30,9 +30,13 @@ def index(request):
         request.session["proj"] = None
     # Render the index page with the current counter value
     personal_info = PersonalInfo.objects.first()
-    category = SkillCategory.objects.all()
-    resume = [Education.objects.all(), OnlineCourse.objects.all(), Experience.objects.all()]
-    projects = Project.objects.all()
+    category = SkillCategory.objects.filter(is_visible=True)
+    resume = [
+        Education.objects.filter(is_visible=True),
+        OnlineCourse.objects.filter(is_visible=True),
+        Experience.objects.filter(is_visible=True),
+    ]
+    projects = Project.objects.filter(is_visible=True)
     context={
         'pi' : personal_info,
         'category' : category,
@@ -44,7 +48,7 @@ def index(request):
 def get_project(request):
     # Get action from GET parameters to either increment or decrement
     proj = request.GET.get("proj")
-    project = Project.objects.get(id=proj)
+    project = get_object_or_404(Project, id=proj, is_visible=True)
 
     return render(request, "components/project_description.html", {"project": project})
 

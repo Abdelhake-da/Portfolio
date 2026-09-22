@@ -1,4 +1,5 @@
 __pycache__/
+.venv/
 *.css.map
 .vscode/
 *.ini

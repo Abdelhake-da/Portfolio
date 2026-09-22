@@ -2,16 +2,23 @@
 {% load static %}
 <div id="about" class='{{class}}'>
     <p class="section-title">{% trans "About me" %}</p>
+    {% if pi.show_description_about_me %}
     <p class="paragraph"> {{pi.description_about_me}} </p>
+    {% endif %}
     <div class="my-info">
+        {% if pi.show_myimg and pi.myimg %}
         <div class="my-img">
-            <img src="{{pi.myimg.url}}" alt="" />
+            <img src="{{pi.myimg.url}}" alt="{{ pi.full_name|default:'Profile' }}" />
         </div>
+        {% endif %}
         <ul>
+            {% if pi.show_birth_date %}
              <li> {% include "logos/chevron-right.svg" %}
                 <span class='item-title'> {% trans "birthday" %} : </span>  <span class='item-value'>
             {{pi.birth_date}}
          </span></li>
+            {% endif %}
+            {% if pi.show_web_site %}
                 <li> {% include "logos/chevron-right.svg" %}
                         <span class='item-title'>{% trans "website" %} :
 
@@ -19,36 +26,49 @@
 
             {% if not pi.web_site == None %} <a href="{{pi.web_site}}">Abdelheq's web site</a>{% else %}.......{% endif %}
          </span></li>
+            {% endif %}
+            {% if pi.show_phone_number %}
                     <li> {% include "logos/chevron-right.svg" %}
                         <span class='item-title'>{% trans "phone" %} : </span><span class='item-value'>
 
             {{pi.phone_number}}
          </span></li>
+            {% endif %}
+            {% if pi.show_city %}
                     <li> {% include "logos/chevron-right.svg" %}
                         <span class='item-title'>{% trans "city" %} : </span><span class='item-value'>
 
             {{pi.city}}
          </span></li>
+            {% endif %}
+            {% if pi.show_age %}
                     <li> {% include "logos/chevron-right.svg" %}
                         <span class='item-title'>{% trans "age" %} : </span><span class='item-value'>
 
             {{pi.age}}
          </span></li>
+            {% endif %}
+            {% if pi.show_degree %}
                     <li> {% include "logos/chevron-right.svg" %}
                         <span class='item-title'>{% trans "degree" %} : </span><span class='item-value'>
 
             {{pi.degree}}
          </span></li>
+            {% endif %}
+            {% if pi.show_email %}
                     <li> {% include "logos/chevron-right.svg" %}
                         <span class='item-title'>{% trans "email" %} : </span><span class='item-value'>
 
             {{pi.email}}
          </span></li>
+            {% endif %}
+            {% if pi.show_freelance %}
                     <li> {% include "logos/chevron-right.svg" %}
                         <span class='item-title'>{% trans "freelance" %} : </span><span class='item-value'>
 
             {{pi.freelance}}
          </span></li>
+            {% endif %}
         </ul>
     </div>
 </div>
